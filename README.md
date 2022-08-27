@@ -315,7 +315,7 @@ Active code page: 1252
 ```sql
 INSERT INTO sales (quantity, sum, productid, buyerid) VALUES (800, 15 * 800 * 0.95, 3, 5);
 ```
-
+тут ```15``` стоимость, ```800``` количество и ```0.95``` это чтобы было 5 проц скидка 
 И теперь уменьшим количество товара
 ```sql
 UPDATE products SET quantity = quantity - 800 WHERE id = 3;
