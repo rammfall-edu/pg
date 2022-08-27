@@ -50,6 +50,15 @@ CREATE TABLE имя_таблицы (
 );
 
 ```
+#### Например, создадим таблицу с названием products для хранения товаров и их количества. Представим, что мы хотели бы вести это в экселе. Мы бы там просто сделали колонки и ниже бы писали бы данные. Но давайте сделаю в базе данных
+
+```sql
+CREATE TABLE products (
+  id SERIAL PRIMARY KEY,
+  productName VARCHAR(30) NOT NULL,
+  quantity INTEGER NOT NULL DEFAULT(0)
+);
+```
 
 
 
