@@ -66,6 +66,22 @@ CREATE TABLE products (
 ```sql
 INSERT INTO products (productName, quantity) VALUES ('Table', 20);
 ```
+Потом приезжает ещё грузовик и привез вам чашки, 300 штук. Вы приняли и вбили их в БД
+
+```sql
+INSERT INTO products (productName, quantity) VALUES ('cup', 300);
+```
+
+Потом вам звонит поставщик и говорит, что привезет завтра вам ананасы, но количество не знает ещё. Ну и вы решили заранее ввести их в БД
+
+```sql
+INSERT INTO products (productName) VALUES ('pineapple');
+```
 
 
+Вот вы сидите со своим postgres и столами, вам наконец звонит мебельный магазин и хочет у вас купить 10 столов, но вы забыли, хватит ли у вас столов, и решаете проверить их количество на вашем складе. 
+
+```sql
+SELECT * FROM products;
+```
 
