@@ -273,3 +273,60 @@ CREATE TABLE buyers (
 ALTER TABLE sales ADD COLUMN buyerId INTEGER CONSTRAINT sales_buyers_fk_buyerid REFERENCES buyers(id);
 ```
 Тут более сложный синтаксис, ибо просто так внешний ключ нельзя добавить. Если расшифровать это, то это означает табличка sales к buyers fk - FOREIGN KEY и через андерскор указываем колонку таблицы. Можете пока забить, это не частый кейс)
+
+Такс, теперь добавим нашего первого покупателя к себе в базу
+
+```sql
+INSERT INTO buyers (name, phone) VALUES ('shmebli devil', '066 666 66 66');
+```
+И отредактируем его первую покупки, чтобы он у нас связался
+
+```sql
+UPDATE sales SET buyerid = 1 WHERE id = 1;
+```
+
+Потом посмотрим наши продажи
+
+```sql
+ id | quantity | sum  | productid | buyerid
+----+----------+------+-----------+---------
+  1 |       10 | 2000 |         1 |       4
+(1 row)
+```
+
+Окей, у меня появляется покупатель, который хочет купить все мои ананасы, давайте в начале его добавим в базу. За такую большую покупку, добавим ему 5 процентов скидку
+
+```sql
+INSERT INTO buyers (name, phone, discount) VALUES ('fruits and goods', '063 098 02 02', 5);
+```
+
+```sql
+Active code page: 1252
+ id |       name       |     phone     | discount
+----+------------------+---------------+----------
+  2 | TEST             | TEST          |       20
+  4 | shmebli devil    | 066 666 66 66 |        0
+  5 | fruits and goods | 063 098 02 02 |        5
+(3 rows)
+```
+
+И давайте продадим ему ананасы все и со скидкой. 
+
+```sql
+INSERT INTO sales (quantity, sum, productid, buyerid) VALUES (800, 15 * 800 * 0.95, 3, 5);
+```
+
+И теперь уменьшим количество товара
+```sql
+UPDATE products SET quantity = quantity - 800 WHERE id = 3;
+```
+
+Смотрим продажи
+
+```sql
+ id | quantity |  sum  | productid | buyerid
+----+----------+-------+-----------+---------
+  1 |       10 |  2000 |         1 |       4
+  2 |      800 | 11400 |         3 |       5
+(2 rows)
+```
