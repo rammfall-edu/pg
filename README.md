@@ -162,5 +162,20 @@ UPDATE products SET price = 30 WHERE id = 2;
 ```sql
 UPDATE products SET price = 15 WHERE id = 3;
 ```
+И теперь проверим что там
 
+```sql
+
+SELECT * FROM products;
+
+```
+
+```sql
+ id | productname | quantity | price
+----+-------------+----------+-------
+  1 | Table       |       20 |   200
+  2 | cup         |      300 |    30
+  3 | pineapple   |        0 |    15
+(3 rows)
+```
 
