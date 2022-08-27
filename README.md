@@ -95,3 +95,33 @@ SELECT * FROM products;
 (3 rows)
 ```
 
+Но вас утомило количество данных(представьте что у вас там тысячи товаров) и вы хотите увидеть только столы
+
+```sql
+SELECT * FROM products WHERE productname='Table';
+```
+И вам возвращает
+```sql
+ id | productname | quantity
+----+-------------+----------
+  1 | Table       |       20
+(1 row)
+```
+
+Окей, но вас волнует только количество, а не все вместе, давайте узнаем только количество столов
+
+```sql
+SELECT quantity FROM products WHERE productname='Table';
+```
+
+И получаете что хотели
+
+```sql
+ quantity
+----------
+       20
+(1 row)
+```
+
+
+
