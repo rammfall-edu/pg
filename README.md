@@ -150,4 +150,17 @@ SELECT * FROM products;
 (3 rows)
 ```
 
+И теперь вы решаете перед продажей столов, поставить стоимость. Значит нужно отредактировать уже сделанные записи.
+Ставим стоимость для каждой записи
+
+```sql
+UPDATE products SET price = 200 WHERE id = 1;
+```
+```sql
+UPDATE products SET price = 30 WHERE id = 2;
+```
+```sql
+UPDATE products SET price = 15 WHERE id = 3;
+```
+
 
