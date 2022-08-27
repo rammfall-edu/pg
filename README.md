@@ -179,3 +179,57 @@ SELECT * FROM products;
 (3 rows)
 ```
 
+Окей, вот приезжает вам грузовик ананасов, 800 штук. Добавим количество
+
+
+```sql
+UPDATE products SET quantity = 800 WHERE id = 3;
+```
+И после проверим
+
+
+```sql
+
+SELECT * FROM products;
+
+```
+
+```sql
+ id | productname | quantity | price
+----+-------------+----------+-------
+  1 | Table       |       20 |   200
+  2 | cup         |      300 |    30
+  3 | pineapple   |      800 |    15
+(3 rows)
+```
+
+Окей, вы назвали стоимость и у вас согласились купить столы, но было бы хорошо вести учет продаж, значит для этого нужна ещё табличка. В табличке должна быть ссылка на товар, который мы продали, количество и сумма от сделки. Давайте сделаем и назовём таблицу ```sales```
+
+```sql
+CREATE TABLE sales (
+  id SERIAL PRIMARY KEY,
+  quantity INTEGER NOT NULL,
+  sum INTEGER NOT NULL,
+  productId INTEGER,
+  FOREIGN KEY(productId) REFERENCES products(id)
+);
+```
+
+И оформляем продажу, 10 столов по их стоимости. Нам значит нужно уменьшить количество товаров в табличке товаров, и сделать запись о продаже
+
+```sql
+UPDATE products SET quantity = 10 WHERE id = 1;
+```
+Но можем сделать гибче, чтобы самим не считать
+
+```sql
+UPDATE products SET quantity = quantity - 10 WHERE id = 1;
+```
+```sql
+ id | productname | quantity | price
+----+-------------+----------+-------
+  2 | cup         |      300 |    30
+  3 | pineapple   |      800 |    15
+  1 | Table       |       10 |   200
+(3 rows)
+```
