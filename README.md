@@ -282,7 +282,7 @@ INSERT INTO buyers (name, phone) VALUES ('shmebli devil', '066 666 66 66');
 И отредактируем его первую покупки, чтобы он у нас связался
 
 ```sql
-UPDATE sales SET buyerid = 1 WHERE id = 1;
+UPDATE sales SET buyerid = 4 WHERE id = 1;
 ```
 
 Потом посмотрим наши продажи
