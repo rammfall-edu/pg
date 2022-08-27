@@ -84,4 +84,14 @@ INSERT INTO products (productName) VALUES ('pineapple');
 ```sql
 SELECT * FROM products;
 ```
+И вам выводится список всего с вашего склада
+
+```sql
+ id | productname | quantity
+----+-------------+----------
+  1 | Table       |       20
+  2 | cup         |      300
+  3 | pineapple   |        0
+(3 rows)
+```
 
